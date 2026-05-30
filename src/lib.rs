@@ -221,7 +221,7 @@ impl Pipeline {
         }
 
         let total_duration_ms = self.stages.len() as u64 * 10; // rough estimate
-        let overall_cr = if input.len() > 0 {
+        let overall_cr = if !input.is_empty() {
             (estimated_bytes as f64) / (input.len() as f64)
         } else {
             1.0
@@ -413,6 +413,7 @@ impl PipelineStage for JsonDecomposeStage {
 
 // -- FilterStage --
 
+#[allow(dead_code)]
 pub struct FilterStage {
     field: String,
     op: String,
@@ -472,6 +473,7 @@ impl PipelineStage for FilterStage {
 // -- SortStage --
 
 pub struct SortStage {
+#[allow(dead_code)]
     field: String,
     descending: bool,
 }
